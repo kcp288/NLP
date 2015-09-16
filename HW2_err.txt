@@ -1,0 +1,144 @@
+Last login: Wed Sep 16 08:46:47 on ttys000
+Macintosh-9:~ kiraprentice$ cd Documents/NLP/NLP
+Macintosh-9:NLP kiraprentice$ cat example.txt
+An impeccably refurbished Federal-style SoHo townhouse at 27 Vandam Street, built in 1823 as part of a quaint row of four brick dwellings and later home to the choreographer Paul Taylor, is poised to enter the market at $16.3 million. The 20-foot-wide-by-100-foot-deep property is on a leafy block between Avenue of the Americas and Varick Street in the Charlton-King-Vandam Historic District. The annual property taxes on the townhouse, which had been divided into four units during Mr. Taylor’s tenure and underwent a three-year gut renovation to convert it to a luxurious single-family residence after he sold it for $3.3 million in 2009, are $49,980. FOLLOW Exclusive See the top listings in New York City before they hit the market. Upper West Side Townhouse for $29 Million AUG 7 A Sprawling Hamptons Estate Offered at $95 Million JUL 17 Fifth Avenue Duplex With a Touch of French Country JUL 10 A Chelsea Townhouse, Mansion-Ready JUL 3 East Hampton Equestrian Compound for $55 Million JUN 12 See More » The current owners, Cory Carlesimo and his wife, Carrie Shumway, commissioned the architect Erica Goetz of (Matthew Baird Architects) to reimagine the space as a stunning but soothing retreat for themselves and their two children. Vance Trimble provided the innovative interior design, and Mingo Design installed the Zen-pristine outdoor landscaping. The four-story townhouse now has five bedrooms, four full baths, two powder rooms, a two-story glass curtain wall overlooking the private rear garden and pond, six fireplaces, seven strategically placed skylights, and a large terrace with a custom Ofuro Japanese soaking tub and Jacuzzi off the third-floor master suite. The home’s rustic plank floors are reclaimed wormy chestnut, the custom millwork is Butternut wood, and the towering doors and elaborate moldings on the parlor floor are original, as are the exposed brick accent walls and ceiling beams throughout. What appears to be a glass floor along the west wall of the north-facing garden is actually a trio of skylights on the more than 11-foot-high ceiling of the 17-by-34-foot studio/recreation room on the basement level. The house’s roof is copper, and the rebuilt steel-and-wood staircase retains its original wooden banister. Outside, a gated forecourt leads to a classic stone stoop or an alternate garden-level entrance. The parlor floor is entered through a simple but elegant foyer with plaster walls and a checkerboard floor of antique French marble. The 14-by-17-foot living room faces south and, like the adjoining formal dining room, has lofty ceilings, restored moldings and an original marble-and-brick fireplace. The dining room has a custom-built wet bar and a pass-through window into the kitchen. The counters and center island in the 17-by-15-foot kitchen are Calacatta Regina white marble, and a French door opens to a stairway that leads down to the garden and a teak-and-stainless summer kitchen. Also on the garden level are a bedroom suite with a fireplace, a powder room, a media room with a fireplace, and a 16-by-15-foot library with a wall of glass that opens directly to the garden. The third floor is mostly dedicated to the master suite, which has a fireplace, dressing room, a sumptuous Calacatta Venato bath with a steam shower, a soaking tub and an original marble fireplace. Another powder room and a small bedroom/sitting room are at the front of the third floor. The fourth floor has two bedrooms, each with its own bath and skylight.Macintosh-9:NLP kiraprentice$ python HW2.py
+<Text: A n   i m p e c...>
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+Done
+Macintosh-9:NLP kiraprentice$ python HW2.py
+<Text: A n   i m p e c...>
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+Traceback (most recent call last):
+  File "HW2.py", line 16, in <module>
+    if re.search('\$\ [0-9]\ \.\ [0-9'):
+TypeError: search() takes at least 2 arguments (1 given)
+Macintosh-9:NLP kiraprentice$ python HW2.py
+<Text: A n   i m p e c...>
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+Traceback (most recent call last):
+  File "HW2.py", line 16, in <module>
+    if re.search('\$\ [0-9]\ \.\ [0-9',w):
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/re.py", line 142, in search
+    return _compile(pattern, flags).search(string)
+  File "/System/Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/re.py", line 242, in _compile
+    raise error, v # invalid expression
+sre_constants.error: unexpected end of regular expression
+Macintosh-9:NLP kiraprentice$ python HW2.py
+<Text: A n   i m p e c...>
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+Done
+Macintosh-9:NLP kiraprentice$ python HW2.py
+<Text: A n   i m p e c...>
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+Done
+Macintosh-9:NLP kiraprentice$ python HW2.py
+<Text: A n   i m p e c...>
+A
+A
+A
+A
+A
+A
+A
+A
+A
+A
+Done
+Macintosh-9:NLP kiraprentice$ python HW2.py
+Traceback (most recent call last):
+  File "HW2.py", line 8, in <module>
+    tokens = nltk.word_tokenize(raw)
+  File "/Library/Python/2.7/site-packages/nltk/tokenize/__init__.py", line 101, in word_tokenize
+    return [token for sent in sent_tokenize(text, language)
+  File "/Library/Python/2.7/site-packages/nltk/tokenize/__init__.py", line 86, in sent_tokenize
+    return tokenizer.tokenize(text)
+  File "/Library/Python/2.7/site-packages/nltk/tokenize/punkt.py", line 1226, in tokenize
+    return list(self.sentences_from_text(text, realign_boundaries))
+  File "/Library/Python/2.7/site-packages/nltk/tokenize/punkt.py", line 1274, in sentences_from_text
+    return [text[s:e] for s, e in self.span_tokenize(text, realign_boundaries)]
+  File "/Library/Python/2.7/site-packages/nltk/tokenize/punkt.py", line 1265, in span_tokenize
+    return [(sl.start, sl.stop) for sl in slices]
+  File "/Library/Python/2.7/site-packages/nltk/tokenize/punkt.py", line 1304, in _realign_boundaries
+    for sl1, sl2 in _pair_iter(slices):
+  File "/Library/Python/2.7/site-packages/nltk/tokenize/punkt.py", line 311, in _pair_iter
+    for el in it:
+  File "/Library/Python/2.7/site-packages/nltk/tokenize/punkt.py", line 1280, in _slices_from_text
+    if self.text_contains_sentbreak(context):
+  File "/Library/Python/2.7/site-packages/nltk/tokenize/punkt.py", line 1325, in text_contains_sentbreak
+    for t in self._annotate_tokens(self._tokenize_words(text)):
+  File "/Library/Python/2.7/site-packages/nltk/tokenize/punkt.py", line 1460, in _annotate_second_pass
+    for t1, t2 in _pair_iter(tokens):
+  File "/Library/Python/2.7/site-packages/nltk/tokenize/punkt.py", line 310, in _pair_iter
+    prev = next(it)
+  File "/Library/Python/2.7/site-packages/nltk/tokenize/punkt.py", line 577, in _annotate_first_pass
+    for aug_tok in tokens:
+  File "/Library/Python/2.7/site-packages/nltk/tokenize/punkt.py", line 542, in _tokenize_words
+    for line in plaintext.split('\n'):
+UnicodeDecodeError: 'ascii' codec can't decode byte 0xe2 in position 10: ordinal not in range(128)
+Macintosh-9:NLP kiraprentice$ python HW2.py
+Traceback (most recent call last):
+  File "HW2.py", line 8, in <module>
+    tokens = nltk.word_tokenize(input_file)
+  File "/Library/Python/2.7/site-packages/nltk/tokenize/__init__.py", line 101, in word_tokenize
+    return [token for sent in sent_tokenize(text, language)
+  File "/Library/Python/2.7/site-packages/nltk/tokenize/__init__.py", line 86, in sent_tokenize
+    return tokenizer.tokenize(text)
+  File "/Library/Python/2.7/site-packages/nltk/tokenize/punkt.py", line 1226, in tokenize
+    return list(self.sentences_from_text(text, realign_boundaries))
+  File "/Library/Python/2.7/site-packages/nltk/tokenize/punkt.py", line 1274, in sentences_from_text
+    return [text[s:e] for s, e in self.span_tokenize(text, realign_boundaries)]
+  File "/Library/Python/2.7/site-packages/nltk/tokenize/punkt.py", line 1265, in span_tokenize
+    return [(sl.start, sl.stop) for sl in slices]
+  File "/Library/Python/2.7/site-packages/nltk/tokenize/punkt.py", line 1304, in _realign_boundaries
+    for sl1, sl2 in _pair_iter(slices):
+  File "/Library/Python/2.7/site-packages/nltk/tokenize/punkt.py", line 310, in _pair_iter
+    prev = next(it)
+  File "/Library/Python/2.7/site-packages/nltk/tokenize/punkt.py", line 1278, in _slices_from_text
+    for match in self._lang_vars.period_context_re().finditer(text):
+TypeError: expected string or buffer
+Macintosh-9:NLP kiraprentice$ 
