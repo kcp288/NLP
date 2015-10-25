@@ -3,6 +3,7 @@ from operator import itemgetter
 from decimal import *
 
 dict = {}
+dict_closed = {}
 dict_idf = {}
 closed_class_stop_words = ['a','the','an','and','or','but','about','above','after','along','amid','among',\
                            'as','at','by','for','from','in','into','like','minus','near','of','off','on',\
@@ -45,7 +46,7 @@ def main():
 	for path, dirs, files in os.walk("./all-OANC-dir"):
 	#for path, dirs, files in os.walk("./all-OANC-test"):
 		for f in files:
-			get_tokens(f)
+			get_tokens2(f)
 
 	# Remove any tokens that have less than 1 occurrence
 	for k in dict.keys():
@@ -53,23 +54,38 @@ def main():
 			del dict[k]
 
 	for k in dict.keys():
-		#print "Token: ", k
 		idf_calc(k, num_docs)
 
 
+	# REG 
+
 	sorted_idf = sorted(dict_idf.items(), key=itemgetter(1))
 
-	output = open('output_idf.txt', 'ab')
+	output = open('output_idf.txt', 'wb')
 	for i in sorted_idf:
 		output.write(str(i) + '\n')
 
 	output.close()
 
+	# CLOSED CLASS
+	dict_idf.clear()
+	for k in dict_closed.keys():
+		idf_calc(k, num_docs)
+
+	sorted_idf_closed = sorted(dict_idf.items(), key=itemgetter(1))
+
+	output_closed = open('output_idf_closed.txt', 'wb')
+
+
+	for i in sorted_idf_closed:
+		output_closed.write(str(i) + '\n')
+
+	output_closed.close()
 	print('done')
 	print "This took: ", time.time()-t, "seconds"
 
-def get_tokens(input_file):
-	file_path = "./all-OANC-dir/" + input_file
+'''def get_tokens(input_file):
+	file_path = "./all-OANC-test/" + input_file
 	read_file = open(file_path, 'r')
 	#dict = {}
 
@@ -90,6 +106,7 @@ def get_tokens(input_file):
 			else:
 				dict[word] = 1
 	read_file.close()
+'''
 
 def get_tokens2(input_file):
 	file_path = "./all-OANC-dir/" + input_file
@@ -105,12 +122,9 @@ def get_tokens2(input_file):
 		s = line.split()
 		for i in range(len(s)):
 			word = s[i]
-			
-			# Do not count closed class words
-			for j in range(len(closed_class_stop_words)):
-				if (word == closed_class_stop_words[j]):
-					read_file.close()
-					return
+
+			if is_closed(word):
+				continue
 
 			# If word is in dictionary, increment val
 			if dict.has_key(word):
@@ -119,7 +133,21 @@ def get_tokens2(input_file):
 			# If not, add new entry
 			else:
 				dict[word] = 1
+
 	read_file.close()
+
+def is_closed(word):
+	if word in closed_class_stop_words:
+		if dict_closed.has_key(word):
+			newval = dict_closed[word] + 1
+			dict_closed[word] = newval
+			# If not, add new entry
+		else:
+			dict_closed[word] = 1
+		return True
+
+	else:
+		return False
 
 def idf_calc(token, num_docs):
 	#output = open('output_idf.txt', 'ab')
@@ -134,7 +162,6 @@ def idf_calc(token, num_docs):
 
 	# Calculate idf
 	idf = math.log(num_docs / docs_containing_term)
-
 	dict_idf[token] = idf
 
 main()
