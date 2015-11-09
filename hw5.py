@@ -45,7 +45,7 @@ def main():
 	for path, dirs, files in os.walk("./all-OANC-dir"):
 	#for path, dirs, files in os.walk("./all-OANC-test"):
 		for f in files:
-			get_tokens(f)
+			get_tokens2(f)
 
 	# Remove any tokens that have less than 1 occurrence
 	for k in dict.keys():

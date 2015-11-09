@@ -84,30 +84,6 @@ def main():
 	print('done')
 	print "This took: ", time.time()-t, "seconds"
 
-'''def get_tokens(input_file):
-	file_path = "./all-OANC-test/" + input_file
-	read_file = open(file_path, 'r')
-	#dict = {}
-
-	for line in read_file:
-		# Skip blank lines
-		if not line.strip():
-			continue 
-
-		# If not blank
-		s = line.split()
-		for i in range(len(s)):
-			word = s[i]
-			# If word is in dictionary, increment val
-			if dict.has_key(word):
-				newval = dict[word] + 1
-				dict[word] = newval
-			# If not, add new entry
-			else:
-				dict[word] = 1
-	read_file.close()
-'''
-
 def get_tokens2(input_file):
 	file_path = "./all-OANC-dir/" + input_file
 	read_file = open(file_path, 'r')
